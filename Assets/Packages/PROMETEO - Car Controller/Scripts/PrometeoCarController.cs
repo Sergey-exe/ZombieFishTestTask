@@ -278,6 +278,7 @@ public class PrometeoCarController : MonoBehaviour
       localVelocityX = transform.InverseTransformDirection(carRigidbody.velocity).x;
       // Save the local velocity of the car in the z axis. Used to know if the car is going forward or backwards.
       localVelocityZ = transform.InverseTransformDirection(carRigidbody.velocity).z;
+      
 
       //CAR PHYSICS
 
@@ -510,7 +511,10 @@ public class PrometeoCarController : MonoBehaviour
     //
 
     // This method apply positive torque to the wheels in order to go forward.
-    public void GoForward(){
+    public void GoForward()
+    {
+      // accelerationMultiplier = (int)(10 * (1 - (carSpeed / maxSpeed)));
+      // accelerationMultiplier = Mathf.Clamp(accelerationMultiplier, 1, 10);
       //If the forces aplied to the rigidbody in the 'x' asis are greater than
       //3f, it means that the car is losing traction, then the car will start emitting particle systems.
       if(Mathf.Abs(localVelocityX) > 2.5f){
